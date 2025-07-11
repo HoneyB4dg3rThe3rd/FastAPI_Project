@@ -7,6 +7,6 @@ class Text(BaseModel):
 
 app = FastAPI()
 
-@app.post("/sentimentanalysis")
+@app.post("/analyze/")
 async def analyse_text(text: Text):
     return sentiment_analysis(text.text)
