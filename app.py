@@ -24,6 +24,7 @@ def create_frontend():
     if st.button("Evaluate"):
         result_blob = post_request(text)
         if result_blob.status_code == 200:
+            st.text("TextBlob")
             col1, col2 = st.columns(2)
             logger.info(f"API-request for blob-analyzer successful.")
             result_blob = result_blob.json()
@@ -35,6 +36,7 @@ def create_frontend():
         
         result_transformer = post_request(text, analyzer="transformer")
         if result_transformer.status_code == 200:
+            st.text("Transformer")
             col1, col2 = st.columns(2)
             logger.info(f"API-request for transfomer-analyzer successful.")
             result_transformer = result_transformer.json()
