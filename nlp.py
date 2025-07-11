@@ -7,10 +7,10 @@ os.chdir(Path(__file__).parent)
 
 def main():
     text = "Textblob is amazingly simple to use. What great fun!"
-    print(text_analysis(text))
+    print(sentiment_analysis(text))
 
 
-def text_analysis(text:str) -> dict:
+def sentiment_analysis(text:str) -> dict:
     """Analyses the polarity of some text as well as it's subjectivity
 
     Args:
