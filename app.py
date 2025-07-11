@@ -29,6 +29,7 @@ def create_frontend():
             result = result.json()
             col1.metric("Polarity", round(result["polarity"], 2))
             col2.metric("Subjectivity", round(result["subjectivity"], 2))
+            logger.info(f"Results:\n\tInput: {text}\n\tPolarity: {round(result["polarity"], 2)}\n\tSubjectivity: {round(result["subjectivity"], 2)}")
         else:
             logger.info(f"API-request failed with code: {result.status_code}")
 
