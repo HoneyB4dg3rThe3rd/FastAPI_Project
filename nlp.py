@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from textblob import TextBlob
 
+logging.basicConfig(filename='fastapi.log', level=logging.INFO)
 os.chdir(Path(__file__).parent)
 
 def main():
