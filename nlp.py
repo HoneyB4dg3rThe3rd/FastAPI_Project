@@ -10,8 +10,8 @@ def main():
     print(text_analysis(text))
 
 
-def text_analysis(text:str) -> dict: #TODO return value is a special type, no dict
-    """Analyses wether some input text is positive, neurtral or negative as well as it's subjectivity
+def text_analysis(text:str) -> dict:
+    """Analyses the polarity of some text as well as it's subjectivity
 
     Args:
         text (str): Text to process
@@ -22,7 +22,10 @@ def text_analysis(text:str) -> dict: #TODO return value is a special type, no di
     logger = logging.getLogger()
     blob = TextBlob(text)
     logger.info("Text ready for sentiment analysis")
-    sentiment_analysis = blob.sentiment
+    sentiment_analysis = {
+            "polarity": blob.sentiment.polarity,
+            "subjectivity": blob.sentiment.subjectivity
+        }
     logger.info("Sentiment analysis sucessful")
     return sentiment_analysis
 
