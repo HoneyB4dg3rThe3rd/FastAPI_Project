@@ -1,3 +1,5 @@
 {
-    "app_name": "Fast_API_Project"
+    "app_name": "Fast_API_Project",
+    "author": "HoneyBadger",
+    "version": "1.0.0"
 }

@@ -17,3 +17,5 @@ with open("./config.json", mode="r", encoding="UTF-8") as file:
     cfg = json.load(file)
 
 APP_TITLE = cfg["app_name"]
+AUTHOR = cfg["author"]
+VERSION = cfg["version"]

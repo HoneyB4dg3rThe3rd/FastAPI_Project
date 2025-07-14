@@ -33,7 +33,7 @@ def sentiment_analysis_blob(text:str) -> dict:
     return sentiment_analysis
 
 def sentiment_analysis_transformer(text:str) -> dict:
-    """Analyses the polarity of some text as well as it's subjectivity
+    """Analyses the polarity of some text
 
     Args:
         text (str): Text to process
