@@ -25,11 +25,7 @@ git clone https://github.com/HoneyB4d3r/FastAPI_Project.git
 cd FastAPI_Project
 ```
 
-
-
-
-
-### 2. Create and Activate a Virtual Environment with Pip
+### 2. Create and Activate a Virtual Environment with Pip \#FIXME
 
 ```bash
 python -m venv venv
@@ -37,7 +33,7 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### 3. Create and Activate a Virtual Environment with Conda
+### 3. Create and Activate a Virtual Environment with Conda \#FIXME
 
 ```bash
 conda create --name <env> --file requirements.txt
