@@ -28,14 +28,7 @@ cd FastAPI_Project
 ### 2. Create and Activate a Virtual Environment
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-```
-
-### 3. Install Dependencies
-
-```bash
-pip install -r requirements.txt
+conda create --name <env> --file requirements.txt
 ```
 
 ## Running the Application
