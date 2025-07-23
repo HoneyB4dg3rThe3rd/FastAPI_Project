@@ -1,4 +1,3 @@
-import config as cfg
 import os
 import streamlit as st
 import requests
@@ -6,16 +5,16 @@ import logging
 
 from pathlib import Path
 
-__author__ = cfg.AUTHOR  # TODO hardcoden --> doctools lesen direkt sourcecode
-__title__ = cfg.APP_TITLE
-__version__ = cfg.VERSION
+__title__ = "Fast_API_Project"
+__author__ = "HoneyBadger"
+__version__ = "1.0.0"
 
 
 os.chdir(Path(__file__).parent)
 logging.basicConfig(
     filename="fastapi.log", level=logging.INFO
-)  # TODO logging.ini nutzen
-logger = logging.getLogger()  # TODO logging auf front- und backend aufgteilen
+)  # TODO use logging.ini
+logger = logging.getLogger()  # TODO split logging (front- und backend)
 
 
 def create_frontend():
