@@ -13,7 +13,7 @@ FastAPI_Project/
 ├── app.py           # Streamlit-based frontend
 ├── api.py           # FastAPI backend (API interface)
 ├── nlp.py           # NLP logic and processing
-├── requirements.txt # Python dependencies
+├── environment.yml # Python dependencies
 ```
 
 ## Installation and Setup
@@ -25,19 +25,11 @@ git clone https://github.com/HoneyB4d3r/FastAPI_Project.git
 cd FastAPI_Project
 ```
 
-### 2. Create and Activate a Virtual Environment with Pip \#FIXME
+### 2. Create and Activate a Virtual Environment with Conda
 
 ```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
-
-### 3. Create and Activate a Virtual Environment with Conda \#FIXME
-
-```bash
-conda create --name <env> --file requirements.txt
-conda activate <env>
+conda env create -f environment.yml
+conda activate fastapi-env
 ```
 
 ## Running the Application
