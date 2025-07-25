@@ -40,6 +40,12 @@ conda activate fastapi-env
 fastapi run api.py
 ```
 
+or
+
+```bash
+uvicorn api:app
+```
+
 This will start the FastAPI server at `http://127.0.0.1:8000`.
 
 ### Start the Frontend (Streamlit App)
