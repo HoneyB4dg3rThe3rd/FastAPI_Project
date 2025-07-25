@@ -23,7 +23,7 @@ def setup_logging():
 
 
 setup_logging()
-logger = logging.getLogger(__name__)  # TODO split logging (front- und backend)
+logger = logging.getLogger(__name__)
 
 
 def create_frontend():
