@@ -93,9 +93,7 @@ def post_request(input: str, analyzer: str = "blob") -> object:
 
 
 def main():
-    logger.info(
-        f"Started APP:\n\tTitle: {__title__}\n\tAuthor: {__author__}\n\tVersion: {__version__}"
-    )
+    logger.info(f"App Interaction received.")
     create_frontend()
 
 
