@@ -13,7 +13,16 @@ __version__ = "1.0.0"
 
 os.chdir(Path(__file__).parent)
 
-logging.config.fileConfig("./frontend_logging.ini")
+
+def setup_logging():
+    for handler in logging.root.handlers[:]:
+        logging.root.removeHandler(handler)
+    logging.config.fileConfig(
+        "./frontend_logging.ini", disable_existing_loggers=False
+    )
+
+
+setup_logging()
 logger = logging.getLogger(__name__)  # TODO split logging (front- und backend)
 
 
@@ -21,7 +30,7 @@ def create_frontend():
     """creates frontend of app"""
     st.title("Evaluate Text")
     text = st.text_input("Text to evaluate.")
-    logger.info("Received text to evaluate.")
+    logger.info(f"Received text to evaluate.")
     if st.button("Evaluate"):
         result_blob = post_request(text)  # TODO inline docs
         if result_blob.status_code == 200:
@@ -35,7 +44,7 @@ def create_frontend():
             col2.metric("Subjectivity", round(result_blob["subjectivity"], 2))
 
             logger.info(
-                f"\nResults:\n\tInput: {text}\n\tPolarity: {round(result_blob['polarity'], 2)}\n\tSubjectivity: {round(result_blob['subjectivity'], 2)}"
+                f"Results:\n\t\tInput: {text}\n\t\tPolarity: {round(result_blob['polarity'], 2)}\n\t\tSubjectivity: {round(result_blob['subjectivity'], 2)}"
             )
         else:
             logger.info(
@@ -54,7 +63,7 @@ def create_frontend():
             col2.metric("Polarity", round(result_transformer["score"], 2))
 
             logger.info(
-                f"\nResults:\n\tInput: {text}\n\tPolarity: {round(result_transformer['score'], 2)}"
+                f"Results:\n\t\tInput: {text}\n\t\tEvaluation: {result_transformer['label']}\n\t\tPolarity: {round(result_transformer['score'], 2)}"
             )
         else:
             logger.info(
@@ -81,7 +90,7 @@ def post_request(input: str, analyzer: str = "blob") -> object:
 
 
 def main():
-    create_frontend()  # FIXME logging on click does not work
+    create_frontend()
 
 
 if __name__ == "__main__":
