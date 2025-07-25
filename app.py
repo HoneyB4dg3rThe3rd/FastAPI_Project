@@ -15,6 +15,9 @@ os.chdir(Path(__file__).parent)
 
 
 def setup_logging():
+    """Ensures the old logging handlers are cleared and cleanly reconfigures
+    logging on each run of the app.
+    """
     for handler in logging.root.handlers[:]:
         logging.root.removeHandler(handler)
     logging.config.fileConfig(
@@ -90,11 +93,11 @@ def post_request(input: str, analyzer: str = "blob") -> object:
 
 
 def main():
+    logger.info(
+        f"Started APP:\n\tTitle: {__title__}\n\tAuthor: {__author__}\n\tVersion: {__version__}"
+    )
     create_frontend()
 
 
 if __name__ == "__main__":
-    logger.info(
-        f"Started APP:\n\tTitle: {__title__}\n\tAuthor: {__author__}\n\tVersion: {__version__}"
-    )
     main()
