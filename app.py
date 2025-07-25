@@ -1,3 +1,4 @@
+import logging.config
 import os
 import streamlit as st
 import requests
@@ -11,10 +12,9 @@ __version__ = "1.0.0"
 
 
 os.chdir(Path(__file__).parent)
-logging.basicConfig(
-    filename="fastapi.log", level=logging.INFO
-)  # TODO use logging.ini
-logger = logging.getLogger()  # TODO split logging (front- und backend)
+
+logging.config.fileConfig("./frontend_logging.ini")
+logger = logging.getLogger(__name__)  # TODO split logging (front- und backend)
 
 
 def create_frontend():
@@ -27,10 +27,13 @@ def create_frontend():
         if result_blob.status_code == 200:
             st.header("TextBlob", divider=True)
             col1, col2 = st.columns(2)
+
             logger.info(f"API-request for blob-analyzer successful.")
+
             result_blob = result_blob.json()
             col1.metric("Polarity", round(result_blob["polarity"], 2))
             col2.metric("Subjectivity", round(result_blob["subjectivity"], 2))
+
             logger.info(
                 f"\nResults:\n\tInput: {text}\n\tPolarity: {round(result_blob['polarity'], 2)}\n\tSubjectivity: {round(result_blob['subjectivity'], 2)}"
             )
@@ -43,10 +46,13 @@ def create_frontend():
         if result_transformer.status_code == 200:
             st.header("Transformer", divider=True)
             col1, col2 = st.columns(2)
+
             logger.info(f"API-request for transfomer-analyzer successful.")
+
             result_transformer = result_transformer.json()
             col1.metric("Label", result_transformer["label"])
             col2.metric("Polarity", round(result_transformer["score"], 2))
+
             logger.info(
                 f"\nResults:\n\tInput: {text}\n\tPolarity: {round(result_transformer['score'], 2)}"
             )
@@ -75,7 +81,7 @@ def post_request(input: str, analyzer: str = "blob") -> object:
 
 
 def main():
-    create_frontend()
+    create_frontend()  # FIXME logging on click does not work
 
 
 if __name__ == "__main__":
@@ -83,4 +89,3 @@ if __name__ == "__main__":
         f"Started APP:\n\tTitle: {__title__}\n\tAuthor: {__author__}\n\tVersion: {__version__}"
     )
     main()
-    logger.info("Application Closed!")
