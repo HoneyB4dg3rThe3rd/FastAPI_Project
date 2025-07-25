@@ -4,8 +4,10 @@ from pathlib import Path
 from textblob import TextBlob
 from transformers import pipeline
 
-logging.basicConfig(filename="fastapi.log", level=logging.INFO)
 os.chdir(Path(__file__).parent)
+
+logging.config.fileConfig("./backend_logging.ini")
+logger = logging.getLogger(__name__)
 
 
 def main():
@@ -23,7 +25,6 @@ def sentiment_analysis_blob(text: str) -> dict:
     Returns:
         dict: Results of NLP
     """
-    logger = logging.getLogger()
     blob = TextBlob(text)
     logger.info(
         "Text ready for sentiment analysis [TextBlob]."
@@ -45,7 +46,6 @@ def sentiment_analysis_transformer(text: str) -> dict:
     Returns:
         dict: Results of NLP
     """
-    logger = logging.getLogger()
     sentiment_pipeline = pipeline("sentiment-analysis")
     analysis_results = sentiment_pipeline([text])
     logger.info(
